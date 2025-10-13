@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>KASIS - Sistem Manajemen Sekolah Modern | SMK NURUL ISLAM JAKARTA</title>
+    <meta name="title" content="KASIS - Sistem Manajemen Sekolah Modern | Kas, Pemasukan, Pengeluaran & Pelanggaran">
+    <meta name="description" content="KASIS adalah aplikasi manajemen sekolah profesional untuk mengelola kas, pemasukan, pengeluaran, dan rekap pelanggaran siswa di SMK Nurul Islam Jakarta. Tersedia untuk Windows, Linux, dan Android. Download gratis sekarang!">
+    <meta name="keywords" content="aplikasi manajemen sekolah, sistem kas sekolah, pelanggaran siswa, administrasi sekolah, KASIS, software sekolah, aplikasi sekolah gratis, manajemen keuangan sekolah, Nuris, Nurul Islam, kasis, nuris">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Indonesian">
+    <meta name="author" content="Genion Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kasis.genion.site/">
+    <meta property="og:title" content="KASIS - Sistem Manajemen Sekolah Modern SMK Nurul Islam Jakarta">
+    <meta property="og:description" content="Solusi profesional untuk mengelola kas, pemasukan, pengeluaran, dan rekap pelanggaran siswa. Multiplatform: Windows, Linux, Android.">
+    <meta property="og:image" content="https://kasis.genion.site/assets/og-image.jpg">
+    
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kasis.genion.site/">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "KASIS",
+      "applicationCategory": "BusinessApplication",
+      "description": "Sistem manajemen sekolah untuk mengelola kas, pemasukan, pengeluaran, dan rekap pelanggaran siswa",
+      "operatingSystem": ["Windows", "Linux", "Android"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "IDR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150"
+      }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .icon-box {
+            transition: all 0.3s ease;
+        }
+        .icon-box:hover {
+            transform: scale(1.1);
+        }
+        .nav-link.active {
+            color: #0d9488;
+            font-weight: 600;
+            position: relative;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #0d9488;
+            border-radius: 2px;
+        }
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="smooth-scroll bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- Logo - Ganti src dengan path logo Anda -->
+                    <div class="mr-3">
+                        <img src="/assets/logo.png" alt="KASIS Logo" class="w-10 h-10 object-contain">
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">KASIS</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-teal-600 transition font-medium">Beranda</a>
+                    <a href="#features" class="nav-link text-gray-600 hover:text-teal-600 transition font-medium">Fitur</a>
+                    <a href="#docs" class="nav-link text-gray-600 hover:text-teal-600 transition font-medium">Dokumentasi</a>
+                    <a href="#download" class="nav-link text-gray-600 hover:text-teal-600 transition font-medium">Download</a>
+                </div>
+                <button id="menuBtn" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded">Beranda</a>
+                <a href="#features" class="mobile-nav-link block px-3 py-2 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded">Fitur</a>
+                <a href="#docs" class="mobile-nav-link block px-3 py-2 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded">Dokumentasi</a>
+                <a href="#download" class="mobile-nav-link block px-3 py-2 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg pt-24 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center text-white">
+            <div class="mb-6">
+                <i class="fas fa-school text-6xl opacity-90"></i>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">KASIS</h1>
+            <p class="text-xl md:text-2xl mb-4 font-light">Sistem Manajemen Sekolah Modern SMK Nurul Islam Jakarta</p>
+            <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">Solusi profesional untuk mengelola kas, pemasukan, pengeluaran, dan rekap pelanggaran siswa dengan efisien</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#download" class="bg-white text-teal-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-download mr-2"></i>Download Sekarang
+                </a>
+                <a href="#docs" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-teal-700 transition">
+                    <i class="fas fa-book mr-2"></i>Lihat Dokumentasi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Fitur Unggulan</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Solusi lengkap untuk manajemen administrasi sekolah dengan antarmuka yang intuitif dan mudah digunakan</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-t-4 border-teal-600">
+                    <div class="icon-box bg-teal-50 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-wallet text-3xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Manajemen Kas</h3>
+                    <p class="text-gray-600 leading-relaxed">Pantau saldo kas sekolah secara real-time dengan sistem yang akurat dan mudah dipahami</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-t-4 border-emerald-600">
+                    <div class="icon-box bg-emerald-50 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-arrow-trend-up text-3xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Pemasukan</h3>
+                    <p class="text-gray-600 leading-relaxed">Catat semua pemasukan dari berbagai sumber dengan kategori yang jelas dan terorganisir</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-t-4 border-cyan-600">
+                    <div class="icon-box bg-cyan-50 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-arrow-trend-down text-3xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Pengeluaran</h3>
+                    <p class="text-gray-600 leading-relaxed">Kelola dan kontrol pengeluaran sekolah dengan sistem approval dan tracking yang lengkap</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-t-4 border-slate-600">
+                    <div class="icon-box bg-slate-50 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-clipboard-list text-3xl text-slate-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Rekap Pelanggaran</h3>
+                    <p class="text-gray-600 leading-relaxed">Dokumentasi lengkap pelanggaran siswa dengan sistem point dan laporan otomatis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Support -->
+    <section class="py-16 px-4 bg-gradient-to-br from-gray-50 to-teal-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Multiplatform Support</h2>
+            <p class="text-center text-gray-600 mb-12">Tersedia untuk berbagai platform yang Anda gunakan</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl text-center shadow-md hover:shadow-xl transition">
+                    <div class="inline-block p-4 bg-blue-50 rounded-full mb-4">
+                        <i class="fab fa-linux text-5xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Linux</h3>
+                    <p class="text-gray-600 mb-2">Ubuntu, Debian, Fedora</p>
+                    <p class="text-sm text-gray-500">Support untuk distro populer</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl text-center shadow-md hover:shadow-xl transition">
+                    <div class="inline-block p-4 bg-cyan-50 rounded-full mb-4">
+                        <i class="fab fa-windows text-5xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Windows</h3>
+                    <p class="text-gray-600 mb-2">Windows 10 & 11</p>
+                    <p class="text-sm text-gray-500">Optimized untuk PC Desktop</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl text-center shadow-md hover:shadow-xl transition">
+                    <div class="inline-block p-4 bg-emerald-50 rounded-full mb-4">
+                        <i class="fab fa-android text-5xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Android</h3>
+                    <p class="text-gray-600 mb-2">Android 8.0 ke atas</p>
+                    <p class="text-sm text-gray-500">Tablet & Smartphone ready</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="py-20 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <i class="fas fa-book-open text-5xl text-teal-600 mb-4"></i>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Dokumentasi</h2>
+                <p class="text-gray-600">Panduan lengkap untuk memulai menggunakan KASIS</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-teal-50 to-white rounded-xl shadow-lg p-8 mb-8 border border-teal-100">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-download text-3xl text-teal-600 mr-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-800">Panduan Instalasi</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-blue-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-windows text-2xl text-blue-600 mr-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800">Windows</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Opsi 1: Installer (Recommended)</p>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+                                    <li>Download file installer KasisAppSetup.exe</li>
+                                    <li>Jalankan file installer dengan double-click</li>
+                                    <li>Ikuti wizard instalasi hingga selesai</li>
+                                    <li>Buka aplikasi KASIS dari Start Menu atau Desktop</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700 mb-2">Opsi 2: Portable (ZIP)</p>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+                                    <li>Download file KASIS-Windows.zip</li>
+                                    <li>Extract file zip ke folder pilihan Anda</li>
+                                    <li>Jalankan file KASIS.exe dari folder hasil extract</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-cyan-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-linux text-2xl text-cyan-600 mr-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800">Linux</h4>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Download file KASIS.zip dari halaman download</li>
+                            <li>Extract file zip ke folder pilihan Anda</li>
+                            <li>Buka terminal dan navigasi ke folder hasil extract</li>
+                            <li>Berikan permission execute dengan <code class="bg-gray-100 px-2 py-1 rounded text-sm">chmod +x KASIS</code></li>
+                            <li>Jalankan aplikasi dengan <code class="bg-gray-100 px-2 py-1 rounded text-sm">./KASIS</code></li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-emerald-500">
+                        <div class="flex items-center mb-3">
+                            <i class="fab fa-android text-2xl text-emerald-600 mr-3"></i>
+                            <h4 class="text-xl font-semibold text-gray-800">Android</h4>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Download file KASIS.apk</li>
+                            <li>Aktifkan "Install from Unknown Sources" di Settings</li>
+                            <li>Buka file APK dan tap Install</li>
+                            <li>Buka aplikasi KASIS dari app drawer</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-50 to-white rounded-xl shadow-lg p-8 border border-slate-100">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-book-reader text-3xl text-teal-600 mr-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-800">Cara Penggunaan</h3>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start bg-white p-4 rounded-lg border-l-4 border-teal-500">
+                        <div class="bg-teal-100 rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                            <span class="text-teal-700 font-bold">1</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Setup Awal</h4>
+                            <p class="text-gray-600">Setelah instalasi, buat akun admin pertama dengan memasukkan nama sekolah, alamat, dan data administrator</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start bg-white p-4 rounded-lg border-l-4 border-teal-500">
+                        <div class="bg-teal-100 rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                            <span class="text-teal-700 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Mengelola Kas</h4>
+                            <p class="text-gray-600">Masuk ke menu Kas untuk melihat saldo, tambah pemasukan atau pengeluaran. Sistem akan otomatis menghitung saldo akhir</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start bg-white p-4 rounded-lg border-l-4 border-teal-500">
+                        <div class="bg-teal-100 rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                            <span class="text-teal-700 font-bold">3</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Catat Pelanggaran</h4>
+                            <p class="text-gray-600">Di menu Pelanggaran, pilih siswa, jenis pelanggaran, dan point akan otomatis ditambahkan. Export laporan dalam format PDF atau Excel</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start bg-white p-4 rounded-lg border-l-4 border-teal-500">
+                        <div class="bg-teal-100 rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                            <span class="text-teal-700 font-bold">4</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Generate Laporan</h4>
+                            <p class="text-gray-600">Buat laporan bulanan atau tahunan untuk kas dan pelanggaran. Laporan dapat dicetak atau disimpan sebagai file</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-4 gradient-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-4">
+                <i class="fas fa-cloud-download-alt text-6xl text-white opacity-90 mb-4"></i>
+            </div>
+            <h2 class="text-4xl font-bold text-center text-white mb-2">Download KASIS</h2>
+            <p class="text-center text-white mb-3 text-lg">Versi 1.0.0</p>
+            <p class="text-center text-teal-100 mb-12">Terakhir diperbarui: Oktober 2025</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Windows -->
+                <div class="bg-white rounded-xl shadow-2xl p-8 text-center hover:shadow-3xl transition">
+                    <div class="inline-block p-4 bg-blue-50 rounded-full mb-4">
+                        <i class="fab fa-windows text-5xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Windows</h3>
+                    <p class="text-gray-600 mb-1">Windows 10/11</p>
+                    <p class="text-sm text-gray-500 mb-6">Size: ~24 MB</p>
+                    <div class="space-y-2">
+                        <button onclick="downloadFile('windows-installer')" class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition shadow-md">
+                            <i class="fas fa-download mr-2"></i>Installer (Recommended)
+                        </button>
+                        <button onclick="downloadFile('windows-zip')" class="w-full bg-teal-500 text-white py-3 rounded-lg font-semibold hover:bg-teal-600 transition shadow-md">
+                            <i class="fas fa-file-zipper mr-2"></i>Portable (ZIP)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Linux -->
+                <div class="bg-white rounded-xl shadow-2xl p-8 text-center hover:shadow-3xl transition">
+                    <div class="inline-block p-4 bg-cyan-50 rounded-full mb-4">
+                        <i class="fab fa-linux text-5xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Linux</h3>
+                    <p class="text-gray-600 mb-1">All Distributions</p>
+                    <p class="text-sm text-gray-500 mb-6">Size: ~24 MB</p>
+                    <button onclick="downloadFile('linux-zip')" class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition shadow-md">
+                        <i class="fas fa-file-zipper mr-2"></i>Download ZIP
+                    </button>
+                </div>
+
+                <!-- Android -->
+                <div class="bg-white rounded-xl shadow-2xl p-8 text-center hover:shadow-3xl transition">
+                    <div class="inline-block p-4 bg-emerald-50 rounded-full mb-4">
+                        <i class="fab fa-android text-5xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-gray-800">Android</h3>
+                    <p class="text-gray-600 mb-1">Android 8.0+</p>
+                    <p class="text-sm text-gray-500 mb-6">Size: ~58 MB</p>
+                    <button onclick="downloadFile('android')" class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition shadow-md">
+                        <i class="fas fa-download mr-2"></i>Download APK
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-white bg-opacity-10 backdrop-blur rounded-xl p-6 text-white border border-white border-opacity-20">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-2xl mr-4 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-3 text-lg">Catatan Penting:</h4>
+                        <ul class="space-y-2 text-sm text-teal-50">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                                <span>Pastikan sistem operasi Anda memenuhi requirement minimum</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                                <span>Untuk Android, aktifkan "Install from Unknown Sources"</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                                <span>Backup data secara berkala untuk keamanan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-1"></i>
+                                <span>Hubungi support jika mengalami kendala instalasi</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="mr-3">
+                            <img src="/assets/logo.png" alt="KASIS Logo" class="w-10 h-10 object-contain">
+                        </div>
+                        <h3 class="text-2xl font-bold">KASIS</h3>
+                    </div>
+                    <p class="text-gray-400">Sistem Manajemen Sekolah Modern untuk Indonesia</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-teal-400">Menu</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Beranda</a></li>
+                        <li><a href="#features" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Fitur</a></li>
+                        <li><a href="#docs" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Dokumentasi</a></li>
+                        <li><a href="#download" class="hover:text-teal-400 transition flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Download</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 KASIS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Active section highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function setActiveLink() {
+            let current = '';
+            const scrollPosition = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update desktop nav
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Update mobile nav
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('bg-teal-50', 'text-teal-700', 'font-semibold');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-teal-50', 'text-teal-700', 'font-semibold');
+                }
+            });
+        }
+
+        // Set active on scroll
+        window.addEventListener('scroll', setActiveLink);
+        
+        // Set active on page load
+        window.addEventListener('load', setActiveLink);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download function
+        function downloadFile(platform) {
+            const downloads = {
+                'windows-installer': {
+                    name: 'KASIS-Setup-v1.0.0.exe',
+                    url: 'https://www.mediafire.com/file/1dqjdm3ba8lbn5g/KasisAppSetup.exe/file'
+                },
+                'windows-zip': {
+                    name: 'KASIS-Windows-v1.0.0.zip',
+                    url: 'https://www.mediafire.com/file/af6i64byzloyaq0/Kasis_v1.zip/file'
+                },
+                'linux-zip': {
+                    name: 'KASIS-Linux.zip',
+                    url: 'https://www.mediafire.com/file/pcz3wvyice3cszy/KASIS.zip/file'
+                },
+                'android': {
+                    name: 'KASIS.apk',
+                    url: 'https://www.mediafire.com/file/ykjv6m9fypxm9rc/KASIS.apk/file'
+                }
+            };
+            
+            const file = downloads[platform];
+            
+            if (file.url === '#') {
+                alert(`Download dimulai untuk: ${file.name}\n\nCatatan: Ini adalah demo. Dalam versi production, file akan otomatis terdownload.`);
+            } else {
+                // Redirect to actual download link
+                window.open(file.url, '_blank');
+            }
+            
+            // In production, you would use:
+            // window.location.href = file.url;
+        }
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+    </script>
+</body>
+</html>
