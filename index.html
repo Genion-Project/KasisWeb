@@ -469,6 +469,43 @@
         </div>
     </footer>
 
+    <!-- Update Notification -->
+    <div id="androidUpdateModal" class="fixed bottom-6 right-6 z-50 transform transition-all duration-500 translate-y-full opacity-0 pointer-events-none">
+        <div class="bg-white rounded-xl shadow-2xl border-l-4 border-emerald-500 p-6 max-w-md relative overflow-hidden backdrop-blur-sm bg-opacity-95 ring-1 ring-black ring-opacity-5">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full z-0 opacity-50"></div>
+            
+            <div class="relative z-10 flex items-start">
+                <div class="flex-shrink-0">
+                    <span class="relative inline-block">
+                        <div class="bg-emerald-100 p-3 rounded-full flex items-center justify-center">
+                            <i class="fab fa-android text-2xl text-emerald-600"></i>
+                        </div>
+                        <span class="absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-red-400 animate-pulse"></span>
+                    </span>
+                </div>
+                <div class="ml-4 flex-1">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold text-gray-900 text-lg leading-tight">Update Android Tersedia! 🚀</h4>
+                        <button onclick="closeUpdateModal()" class="text-gray-400 hover:text-gray-600 transition -mt-1 -mr-2 p-1">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2 mb-4 leading-relaxed">
+                        Versi terbaru KASIS untuk Android hadir dengan performa lebih cepat & fitur baru. Update sekarang untuk pengalaman terbaik!
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <button onclick="downloadFile('android'); closeUpdateModal()" class="flex-1 bg-emerald-600 text-white px-4 py-2.5 rounded-lg text-sm font-semibold hover:bg-emerald-700 transition shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center">
+                            <i class="fas fa-download mr-2"></i> Update
+                        </button>
+                        <button onclick="closeUpdateModal()" class="px-4 py-2.5 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg text-sm font-medium transition">
+                            Nanti
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
@@ -557,7 +594,7 @@
                 },
                 'android': {
                     name: 'KASIS.apk',
-                    url: 'https://www.mediafire.com/file/ykjv6m9fypxm9rc/KASIS.apk/file'
+                    url: 'https://www.mediafire.com/file/hhwtf0a8kx4p51l/Kasis.apk/file'
                 }
             };
             
@@ -583,6 +620,26 @@
                 nav.classList.remove('shadow-xl');
             }
         });
+
+        // Update Notification Logic
+        const updateModal = document.getElementById('androidUpdateModal');
+        
+        function showUpdateModal() {
+            setTimeout(() => {
+                if (updateModal) {
+                    updateModal.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                }
+            }, 3000); // Show after 3 seconds
+        }
+
+        function closeUpdateModal() {
+            if (updateModal) {
+                updateModal.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Initialize notification on load
+        window.addEventListener('load', showUpdateModal);
     </script>
 </body>
 </html>
